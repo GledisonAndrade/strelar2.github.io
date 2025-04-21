@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESTRELAR - Jogo de Nave Espacial</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Tela do Menu Principal -->
+    <div id="menu-screen" class="screen">
+        <h1>ESTRELAR</h1>
+        <div class="menu-buttons">
+            <button id="play-btn">Jogar</button>
+            <button id="how-to-play-btn">Instruções</button>
+            <button id="credits-btn">Créditos</button>
+        </div>
+    </div>
+
+    <!-- Tela de Instruções -->
+    <div id="instructions-screen" class="screen hidden">
+        <h2>Como Jogar</h2>
+        <ul>
+            <li>⬅️ ➡️ Movimente a nave</li>
+            <li>🔼 Atire com a tecla ESPAÇO ou botão "ATIRAR"</li>
+            <li>⚠️ Evite meteoros e inimigos</li>
+            <li>💊 Colete cápsulas para recuperar vida</li>
+            <li>👾 Derrote o chefão para avançar!</li>
+        </ul>
+        <button id="back-from-instructions">Voltar</button>
+    </div>
+
+    <!-- Tela de Créditos -->
+    <div id="credits-screen" class="screen hidden">
+        <h2>Créditos</h2>
+        <p>Desenvolvido por:</p>
+        <p><strong>Gledison Arruda Andrade</strong></p>
+        <button id="back-from-credits">Voltar</button>
+    </div>
+
+    <!-- Tela do Jogo -->
+    <div id="game-screen" class="screen hidden">
+        <canvas id="game-canvas"></canvas>
+        
+        <!-- Controles Mobile -->
+        <div id="mobile-controls">
+            <button id="move-left">⬅️</button>
+            <button id="move-right">➡️</button>
+            <button id="shoot-btn">ATIRAR</button>
+        </div>
+
+        <!-- Interface do Jogo -->
+        <div id="game-ui">
+            <div>Pontos: <span id="score">0</span></div>
+            <div>Vidas: <span id="lives">4</span></div>
+            <div>Fase: <span id="level">1</span></div>
+        </div>
+
+        <!-- Tela de Game Over -->
+        <div id="game-over-screen" class="hidden">
+            <h2>Game Over!</h2>
+            <p>Pontuação: <span id="final-score">0</span></p>
+            <button id="restart-btn">Jogar Novamente</button>
+            <button id="return-to-menu-btn">Voltar ao Menu</button>
+        </div>
+
+        <!-- Tela de Fase Concluída -->
+        <div id="level-complete-screen" class="hidden">
+            <h2>Parabéns! 🎉</h2>
+            <p>Você encontrou um lugar seguro!</p>
+            <button id="next-level-btn">Próxima Fase</button>
+        </div>
+
+        <!-- Tela de Fim de Jogo (Vitória) -->
+        <div id="game-complete-screen" class="hidden">
+            <h2>Você Venceu! 🚀</h2>
+            <p>Pontuação Final: <span id="total-score">0</span></p>
+            <button id="play-again-btn">Jogar Novamente</button>
+            <button id="back-to-menu-btn">Menu Principal</button>
+        </div>
+    </div>
+
+    <script src="js/game.js"></script>
+</body>
+</html>
