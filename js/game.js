@@ -2,17 +2,16 @@
 const config = {
     width: window.innerWidth,
     height: window.innerHeight,
-    playerSpeed: 8,
-    bulletSpeed: 10,
-    enemySpeed: 3,
-    meteorSpeed: 4,
+    playerSpeed: 10,           // Aumentado
+    bulletSpeed: 12,           // Aumentado
+    enemySpeed: 2,             // Reduzido
+    meteorSpeed: 2,            // Reduzido
     energySpeed: 3,
-    spawnRate: 60,
-    bossSpawnScore: 150,
+    spawnRate: 90,             // Reduzido (menos inimigos)
+    bossSpawnScore: 200,       // Aumentado
     levels: 4,
-    levelMultipliers: [1, 1.3, 1.7, 2.2]
+    levelMultipliers: [1, 1.1, 1.3, 1.5]  // Dificuldade progressiva mais suave
 };
-
 // Elementos do DOM
 const screens = {
     menu: document.getElementById('menu-screen'),
@@ -308,6 +307,31 @@ class EnergyCapsule extends GameObject {
         ctx.fill();
     }
 }
+
+  // Criar estrelas de fundo
+    gameState.stars = [];
+    for (let i = 0; i < 200; i++) {
+        gameState.stars.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 2 + 1,
+            speed: Math.random() * 0.5 + 0.1
+        });
+    }
+}
+
+// Classe da Nave do Jogador (com propulsão realista)
+class Player {
+    constructor() {
+        this.width = 50;
+        this.height = 80;
+        this.x = config.width / 2 - this.width / 2;
+        this.y = config.height - this.height - 30; // Posicionada mais acima
+        this.speed = config.playerSpeed;
+        this.cooldown = 0;
+        this.maxCooldown = 8; // Tiro mais rápido
+        this.engineParticles = [];
+    }
 
 // Funções do jogo
 function spawnEnemies() {
